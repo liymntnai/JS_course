@@ -65,16 +65,18 @@ const inputClosePin = document.querySelector('.form__input--pin');
 /////////////////////////////////////////////////
 // LECTURES
 
-const currencies = new Map([
-  ['USD', 'United States dollar'],
-  ['EUR', 'Euro'],
-  ['GBP', 'Pound sterling'],
-]);
+// const currencies = new Map([
+//   ['USD', 'United States dollar'],
+//   ['EUR', 'Euro'],
+//   ['GBP', 'Pound sterling'],
+// ]);
 
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
 
+// ARRAYS ARE OBJECTS AND THEY GET ACCESS TO SPECIAL BUILT-IN METHODS
+// THAT WE CAN ESSENTIALLY SEE AS ARRAYS
 
 const arrayOfUsers = {
   Jonas:{
@@ -100,5 +102,131 @@ const arr2 = ['j', 'k', 'l', 'm', 'n', 'o', 'p'];
 
 console.log(arr1.reverse());
 // JOIN
+console.log(arr1.join(' - '));
 
 // SPLIT: SLICE AND SPLICE
+
+// SLICE
+console.log(arr1.slice(2)); //we start extracting from elmt [2] of the array
+console.log(arr1.slice(2, 4)); //we start at [2] and end at [3]. [4] is not included
+console.log(arr1.slice(-2));
+console.log(arr1.slice(1, -2));
+
+// SPLICE
+console.log('--- SPLICE ---');
+
+console.log(arr2.splice(4));
+console.log(arr2);
+console.log(arr2.splice(1,3));
+
+
+
+// LOOPING ARRAYS
+
+
+// forEach with Maps and Sets
+const currencies = new Map([
+  ['USD', 'United States dollar'],
+  ['EUR', 'Euro'],
+  ['GBP', 'Pound sterling'],
+]);
+
+currencies.forEach(function(value, key, map) {
+  console.log(`${key}: ${value}`);
+});
+
+// Sets
+const currenciesUnique = new Set(['USD', 'GBP', 'USD', 'EUR', 'EUR']);
+console.log(currenciesUnique);
+currenciesUnique.forEach(function(value, _, map) {
+  console.log(`${value}: ${value}`);
+});
+
+//////////////////////////////////////
+// Coding Challenge #1
+
+/* 
+Julia and Kate are doing a study on dogs. 
+So each of them asked 5 dog owners about their dog's age, 
+and stored the data into an array (one array for each). 
+For now, they are just interested in knowing whether a dog is an adult or a puppy.
+ A dog is an adult if it is at least 3 years old, and it's a puppy if it's less than 3 years old.
+
+Create a function 'checkDogs', which accepts 2 arrays of dog's ages 
+('dogsJulia' and 'dogsKate'), and does the following things:
+
+1. Julia found out that the owners of the FIRST and the LAST TWO dogs 
+actually have cats, not dogs! So create a shallow copy of Julia's array, 
+and remove the cat ages from that copied array (because it's a bad practice to mutate function parameters)
+2. Create an array with both Julia's (corrected) and Kate's data
+3. For each remaining dog, log to the console whether it's an adult ("Dog number 1 is an adult,
+ and is 5 years old") or a puppy ("Dog number 2 is still a puppy 🐶")
+4. Run the function for both test datasets
+
+HINT: Use tools from all lectures in this section so far 😉
+
+TEST DATA 1: Julia's data [3, 5, 2, 12, 7], Kate's data [4, 1, 15, 8, 3]
+TEST DATA 2: Julia's data [9, 16, 6, 8, 3], Kate's data [10, 5, 6, 1, 4]
+
+GOOD LUCK 😀
+*/
+
+const juliaDogs = [3, 5, 2, 12, 7]
+const kateDogs = [4, 1, 15, 8, 3]
+
+const checkDogs = (kateDogs, juliaDogs) => { 
+  const kateDogsNew = kateDogs.slice(1, -2);
+  const juliaDogsNew = juliaDogs.slice();
+
+  console.log('--- KATE\'S DOGS ---');
+  
+  kateDogsNew.forEach(function (dog, index) {
+    if (dog >= 3) {
+      console.log(`Dog number ${index + 1} is an adult, and is ${dog} years old`);
+    } else {
+      console.log(`Dog number ${index + 1} is still a puppy 🐶`);
+    }
+  })
+   
+  console.log('--- JULIA\'S DOGS ---');
+  juliaDogsNew.forEach(function (dog, index) {
+    if (dog >= 3) {
+      console.log(`Dog number ${index + 1} is an adult, and is ${dog} years old`);
+    } else {
+      console.log(`Dog number ${index + 1} is still a puppy 🐶`);
+    }
+  })
+  console.log(kateDogsNew);
+  
+}
+
+// checkDogs(kateDogs, juliaDogs)
+
+
+// MAP, FILTER AND REDUCE METHODS
+
+const eurToUsd = 1.1;
+
+const movementsUSD = movements.map(function (mov) {
+  return mov * eurToUsd;
+});
+
+// Computing Usernames
+
+const steve = 'Steve Trad Williams'; // return stw
+const userName = steve.toLowerCase().split(' ').map(function (name) {
+  return name[0];
+}).join('');
+
+console.log(userName);
+
+// Array map to get the lengths of strings
+
+const lengthsOfStrings = function (string) {
+  const length = string.split(' ').map(function (name) {
+    return name.length;
+  })
+  return length;
+}
+
+console.log(lengthsOfStrings(steve));

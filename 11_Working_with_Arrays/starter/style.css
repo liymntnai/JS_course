@@ -21,26 +21,46 @@ body {
   background-color: #f3f3f3;
   height: 100vh;
   padding: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+input{
+  display: block;
 }
 
-nav {
+/* index.html */
+
+.wrapper{
+ 
+  padding: 4rem;
+}
+.card{
+  background-color: #fff;
+  box-shadow: 0 0 10px #ddd;
+  border-radius: 10px;
+}
+.logo-container{
+  margin: auto;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: center;
-  padding: 0 2rem;
+  gap: 5px;
 }
 
 .welcome {
   font-size: 1.9rem;
   font-weight: 500;
+  text-align: center;
 }
 
 .logo {
-  height: 5.25rem;
+  /* height: 5.25rem; */
+  width: 80px;
 }
 
 .login {
-  display: flex;
+  /* display: flex; */
 }
 
 .login__input {
@@ -48,13 +68,14 @@ nav {
   padding: 0.5rem 2rem;
   font-size: 1.6rem;
   font-family: inherit;
-  text-align: center;
-  width: 12rem;
+  /* text-align: center; */
+  /* width: 12rem; */
   border-radius: 10rem;
-  margin-right: 1rem;
+  margin: 2rem 0;
   color: inherit;
   border: 1px solid #fff;
   transition: all 0.3s;
+  display: block;
 }
 
 .login__input:focus {
@@ -68,11 +89,13 @@ nav {
 
 .login__btn {
   border: none;
-  background: none;
+  background: green;
   font-size: 2.2rem;
-  color: inherit;
+  /* color: inherit; */
+  color: #fff;
   cursor: pointer;
   transition: all 0.3s;
+  padding: 1rem 2rem;
 }
 
 .login__btn:hover,
@@ -80,9 +103,13 @@ nav {
 .btn--sort:hover,
 .btn--sort:focus {
   outline: none;
-  color: #777;
+  /* color: #777; */
+  background-color: rgb(11, 167, 11);
 }
-
+.btn-container{
+  margin: auto;
+  text-align: center;
+}
 /* MAIN */
 .app {
   position: relative;
@@ -94,7 +121,7 @@ nav {
   gap: 2rem;
 
   /* NOTE This creates the fade in/out anumation */
-  opacity: 0;
+  /* opacity: 0; */
   transition: all 1s;
 }
 
